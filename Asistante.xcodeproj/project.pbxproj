@@ -15,6 +15,7 @@
 		4F65B0FD2431D38200BF24A0 /* Asistante.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F65B0FB2431D38200BF24A0 /* Asistante.xcdatamodeld */; };
 		4F65B0FF2431D38400BF24A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F65B0FE2431D38400BF24A0 /* Assets.xcassets */; };
 		4F65B1022431D38400BF24A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F65B1002431D38400BF24A0 /* LaunchScreen.storyboard */; };
+		4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4F65B0FE2431D38400BF24A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F65B1012431D38400BF24A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F65B1032431D38400BF24A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				4F65B0FE2431D38400BF24A0 /* Assets.xcassets */,
 				4F65B1002431D38400BF24A0 /* LaunchScreen.storyboard */,
 				4F65B1032431D38400BF24A0 /* Info.plist */,
+				4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */,
 				4F65B0FB2431D38200BF24A0 /* Asistante.xcdatamodeld */,
 			);
 			path = Asistante;
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
 				4F65B0F72431D38200BF24A0 /* SecondViewController.swift in Sources */,
 				4F65B0FD2431D38200BF24A0 /* Asistante.xcdatamodeld in Sources */,
 				4F65B0F52431D38200BF24A0 /* FirstViewController.swift in Sources */,
