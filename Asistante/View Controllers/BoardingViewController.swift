@@ -18,11 +18,13 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollWidth: CGFloat! = 0.0
     var scrollHeight: CGFloat! = 0.0
+    var pageCount:Int = 0
+//    var defaults:UserDefaults!
 
     //data for the slides
     var boardingTitles = ["1","2","3"]
-    var boardingDescs = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
-    var boardingImages = ["Image1","",""]
+    var boardingDescs = ["Dengan aplikasi ini Anda dapat menjadi suparman.","Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
+    var boardingImages = ["Image1","Image2","Image3"]
 
     //get dynamic width and height of scrollview and save it
     override func viewDidLayoutSubviews() {
@@ -31,9 +33,21 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if UserDefaults.standard.bool(forKey: "FirstLaunch") == true {
+            performSegue(withIdentifier: "skipSegue", sender: self)
+                print("Segue performed - user defaults returned true!")
+
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
+        UserDefaults.standard.bool(forKey: "FirstLaunch")
+        
+       
+        
         //to call viewDidLayoutSubviews() and get dynamic width and height of scrollview
 
         self.ScrollView.delegate = self
@@ -99,7 +113,53 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
         let page = (ScrollView?.contentOffset.x)!/scrollWidth
         PageControl?.currentPage = Int(page)
     }
-
+    
+    func scrollToPage(page: Int, animated: Bool) {
+        var frame: CGRect = self.ScrollView.frame
+        frame.origin.x = frame.size.width * CGFloat(page)
+        frame.origin.y = 0
+        self.ScrollView.scrollRectToVisible(frame, animated: animated)
+    }
+    
+   //scroll onboarding with buttons
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        if pageCount < 2 {
+            pageCount += 1
+            self.scrollToPage(page: pageCount, animated: true)
+            PageControl.currentPage = pageCount
+            
+            if pageCount == 2 {
+                nextButton.setTitle("Let's Go!", for: UIControl.State.normal)
+            }
+            else {
+                nextButton.setTitle("Next", for: UIControl.State.normal)
+            }
+        }
+        else {
+            performSegue(withIdentifier: "toMainSegue", sender: self)
+            return
+        }
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        if pageCount > 0 {
+            pageCount -= 1
+            self.scrollToPage(page: pageCount, animated: true)
+            PageControl.currentPage = pageCount
+            nextButton.setTitle("Next", for: UIControl.State.normal)
+        }
+        else {
+            PageControl.currentPage = pageCount
+            return
+            
+        }
+        
+    }
+    
+ 
+    
     /*
     // MARK: - Navigation
 
