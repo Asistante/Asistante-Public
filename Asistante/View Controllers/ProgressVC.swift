@@ -34,6 +34,7 @@ class ProgressVC: UIViewController {
     }
     
     @IBAction func notificationButtonPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(NotificationTVC(), animated: true)
     }
     
 

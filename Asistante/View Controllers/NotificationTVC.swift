@@ -9,9 +9,31 @@
 import UIKit
 
 class NotificationTVC: UITableViewController {
-
+    
+    var notifData:[Notification] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Notifications"
+        tableView.tableFooterView = UIView()
+        if notifData.count == 0 {
+            
+            let notificationTVPlaceholderText = UILabel.init(frame: CGRect(x:32,y:tableView.frame.maxY+30,width:tableView.frame.maxX-64,height:30))
+                notificationTVPlaceholderText.textAlignment = .center
+                notificationTVPlaceholderText.font = UIFont.boldSystemFont(ofSize: 20.0)
+                notificationTVPlaceholderText.text = "No notifications."
+                notificationTVPlaceholderText.tag = 777
+            view.addSubview(notificationTVPlaceholderText)
+            view.bringSubviewToFront(notificationTVPlaceholderText)
+        }
+        else {
+            for removedSubview in view.subviews where removedSubview.tag == 777  {
+                DispatchQueue.main.async {
+                    removedSubview.removeFromSuperview()
+                }
+            }
+        }
+        
         
         
         //view.bringSubviewToFront(tableView)
@@ -37,8 +59,9 @@ class NotificationTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return notifData.count
     }
 
     /*

@@ -23,6 +23,7 @@
 		4F9153812438A826007F3E76 /* InactiveTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153802438A826007F3E76 /* InactiveTaskCell.swift */; };
 		4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153822438D3B1007F3E76 /* TabBarController.swift */; };
 		4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153882438DE7E007F3E76 /* NewTaskVC.swift */; };
+		4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		4F9153802438A826007F3E76 /* InactiveTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveTaskCell.swift; sourceTree = "<group>"; };
 		4F9153822438D3B1007F3E76 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F9153882438DE7E007F3E76 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
+		4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				4F1B1037243B2C2B00C3DDA1 /* NotificationTVC.swift */,
 				4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */,
 				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
+				4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				4F65B0F52431D38200BF24A0 /* TasksTVC.swift in Sources */,
 				4F65B0F12431D38200BF24A0 /* AppDelegate.swift in Sources */,
 				4F65B0F32431D38200BF24A0 /* SceneDelegate.swift in Sources */,
+				4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */,
 				4F9153812438A826007F3E76 /* InactiveTaskCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,29 @@
 
 import UIKit
 
-class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource
+{
+    
+    let cellContents: [String] = ["Due Date", "Set Reminder", "Invite Friends"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addTaskCell", for: indexPath)
+        cell.textLabel?.text = cellContents[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {}
+        else if indexPath.row == 1 {
+            performSegue(withIdentifier: "addReminderSegue", sender: self)
+        }
+        else {}
+    }
+    
     
     
     
@@ -17,13 +39,7 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     @IBOutlet weak var taskStatePicker: UIPickerView!
     @IBOutlet weak var taskTitleTextField: UITextField!
     @IBOutlet weak var taskDescriptionTextField: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var collaborateButton: UIButton!
     @IBOutlet weak var addTaskButton: UIButton!
-    
-    
-    
-    
     
     
     
@@ -44,6 +60,7 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         self.taskStatePicker.delegate = self
         self.taskStatePicker.dataSource = self
         tasksPicker = ["Regular","Important","Urgent"]
+        addTaskButton.layer.cornerRadius = 25
         
         // Do any additional setup after loading the view.
     }
@@ -117,10 +134,10 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         }
     }
     
-    @IBAction func saveButtonPressed(_ unwindSegue: UIStoryboardSegue, sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "unwindToTabBar", sender: self)
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func saveButtonPressed(_ unwindSegue: UIStoryboardSegue, sender: UIBarButtonItem) {
+//        performSegue(withIdentifier: "unwindToTabBar", sender: self)
+//        dismiss(animated: true, completion: nil)
+//    }
         
     
     //PickerView Setup.
@@ -138,6 +155,12 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         let chosenState = row
         print (chosenState)
     }
+    
+    
+    @IBAction func addTaskButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     /*
     // MARK: - Navigation

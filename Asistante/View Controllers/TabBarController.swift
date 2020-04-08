@@ -12,8 +12,8 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       setupMiddleButton()
+        UserDefaults.standard.set(true, forKey: "FirstLaunch")
+        setupMiddleButton()
 
         // Do any additional setup after loading the view.
     }

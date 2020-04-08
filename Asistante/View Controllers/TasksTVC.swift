@@ -95,10 +95,9 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //self.view.bringSubviewToFront(tableView)
         
         //User Defaults for onboarding. For debug set to false, for production set to true
-        UserDefaults.standard.set(false, forKey: "FirstLaunch")
+        UserDefaults.standard.set(true, forKey: "FirstLaunch")
         print("User default set!")
-        UserDefaults.standard.set("Asep", forKey: "Username")
-        print("Username set!")
+        
         // Do any additional setup after loading the view.
     }
     
@@ -134,7 +133,8 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func notificationButtonPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "notificationSegue", sender: self)
+        //self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(NotificationTVC(), animated: true)
     }
     
     

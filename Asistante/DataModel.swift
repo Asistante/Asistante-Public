@@ -7,7 +7,10 @@
 //
 
 import Foundation
-import CoreData
+
+struct Notifications {
+    var notificationTitle:String
+}
 
 //Tasks data struct declared here.
 

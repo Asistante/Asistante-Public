@@ -22,9 +22,9 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
 //    var defaults:UserDefaults!
 
     //data for the slides
-    var boardingTitles = ["1","2","3"]
-    var boardingDescs = ["Dengan aplikasi ini Anda dapat menjadi suparman.","Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
-    var boardingImages = ["Image1","Image2","Image3"]
+//    var boardingTitles = ["1","2","3"]
+//    var boardingDescs = ["Dengan aplikasi ini Anda dapat menjadi suparman.","Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
+    var boardingImages = ["onboarding1","onboarding2","onboarding3","onboarding4"]
 
     //get dynamic width and height of scrollview and save it
     override func viewDidLayoutSubviews() {
@@ -58,7 +58,7 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
         //create the slides and add them
         var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
 
-        for index in 0..<boardingTitles.count {
+        for index in 0..<boardingImages.count {
             frame.origin.x = scrollWidth * CGFloat(index)
             frame.size = CGSize(width: scrollWidth, height: scrollHeight)
 
@@ -66,37 +66,35 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
 
             //subviews
             let imageView = UIImageView.init(image: UIImage.init(named: boardingImages[index]))
-            imageView.frame = CGRect(x:0,y:0,width:300,height:300)
+            imageView.frame = ScrollView.frame //CGRect(x:0,y:0,width:300,height:300)
             imageView.contentMode = .scaleAspectFit
-            imageView.center = CGPoint(x:scrollWidth/2,y: scrollHeight/2 - 50)
+            imageView.center = CGPoint(x:scrollWidth/2,y: scrollHeight/2)
           
-            let txt1 = UILabel.init(frame: CGRect(x:32,y:imageView.frame.maxY+30,width:scrollWidth-64,height:30))
-            txt1.textAlignment = .center
-            txt1.font = UIFont.boldSystemFont(ofSize: 20.0)
-            txt1.text = boardingTitles[index]
-
-            let txt2 = UILabel.init(frame: CGRect(x:32,y:txt1.frame.maxY+10,width:scrollWidth-64,height:50))
-            txt2.textAlignment = .center
-            txt2.numberOfLines = 3
-            txt2.font = UIFont.systemFont(ofSize: 18.0)
-            txt2.text = boardingDescs[index]
+//            let txt1 = UILabel.init(frame: CGRect(x:32,y:imageView.frame.maxY+30,width:scrollWidth-64,height:30))
+//            txt1.textAlignment = .center
+//            txt1.font = UIFont.boldSystemFont(ofSize: 20.0)
+//            txt1.text = boardingTitles[index]
+//
+//            let txt2 = UILabel.init(frame: CGRect(x:32,y:txt1.frame.maxY+10,width:scrollWidth-64,height:50))
+//            txt2.textAlignment = .center
+//            txt2.numberOfLines = 3
+//            txt2.font = UIFont.systemFont(ofSize: 18.0)
+//            txt2.text = boardingDescs[index]
 
             slide.addSubview(imageView)
-            slide.addSubview(txt1)
-            slide.addSubview(txt2)
             ScrollView.addSubview(slide)
 
         // Do any additional setup after loading the view.
     }
         //set width of scrollview to accomodate all the slides
-             ScrollView.contentSize = CGSize(width: scrollWidth * CGFloat(boardingTitles.count), height: scrollHeight)
+             ScrollView.contentSize = CGSize(width: scrollWidth * CGFloat(boardingImages.count), height: scrollHeight)
 
              //disable vertical scroll/bounce
              self.ScrollView.contentSize.height = 1.0
 
              //initial state
              
-            PageControl.numberOfPages = boardingTitles.count
+            PageControl.numberOfPages = boardingImages.count
             PageControl.currentPage = 0
 
          }
@@ -124,20 +122,20 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
    //scroll onboarding with buttons
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        if pageCount < 2 {
+        if pageCount < 3 {
             pageCount += 1
             self.scrollToPage(page: pageCount, animated: true)
             PageControl.currentPage = pageCount
             
-            if pageCount == 2 {
-                nextButton.setTitle("Let's Go!", for: UIControl.State.normal)
+            if pageCount == 3 {
+                nextButton.setTitle("Get Started", for: UIControl.State.normal)
             }
             else {
                 nextButton.setTitle("Next", for: UIControl.State.normal)
             }
         }
         else {
-            performSegue(withIdentifier: "toMainSegue", sender: self)
+            performSegue(withIdentifier: "setNameSegue", sender: self)
             return
         }
     }
