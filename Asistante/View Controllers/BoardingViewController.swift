@@ -34,17 +34,20 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        
         if UserDefaults.standard.bool(forKey: "FirstLaunch") == true {
-            performSegue(withIdentifier: "skipSegue", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "skipSegue", sender: self)
                 print("Segue performed - user defaults returned true!")
-
+            }
         }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         UserDefaults.standard.bool(forKey: "FirstLaunch")
+        
+        
         
        
         

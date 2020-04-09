@@ -24,6 +24,7 @@
 		4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153822438D3B1007F3E76 /* TabBarController.swift */; };
 		4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153882438DE7E007F3E76 /* NewTaskVC.swift */; };
 		4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */; };
+		4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		4F9153822438D3B1007F3E76 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F9153882438DE7E007F3E76 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
 		4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameVC.swift; sourceTree = "<group>"; };
+		4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriorityVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */,
 				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
 				4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */,
+				4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				4F1B1038243B2C2B00C3DDA1 /* NotificationTVC.swift in Sources */,
 				4F1B103A243B2C9600C3DDA1 /* EditTaskVC.swift in Sources */,
+				4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */,
 				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
 				4F65B0F72431D38200BF24A0 /* ProgressVC.swift in Sources */,
 				4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */,

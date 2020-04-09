@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotificationTVC: UITableViewController {
     
@@ -14,8 +15,12 @@ class NotificationTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Notifications"
         tableView.tableFooterView = UIView()
+        self.tabBarController?.tabBar.isHidden = true
+        
+        
         if notifData.count == 0 {
             
             let notificationTVPlaceholderText = UILabel.init(frame: CGRect(x:32,y:tableView.frame.maxY+30,width:tableView.frame.maxX-64,height:30))
@@ -36,6 +41,7 @@ class NotificationTVC: UITableViewController {
         
         
         
+        
         //view.bringSubviewToFront(tableView)
         
         // Uncomment the following line to preserve selection between presentations
@@ -50,8 +56,7 @@ class NotificationTVC: UITableViewController {
     // MARK: - Table view data source
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.hidesBottomBarWhenPushed = false
-    }
+        self.tabBarController?.tabBar.isHidden = false    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

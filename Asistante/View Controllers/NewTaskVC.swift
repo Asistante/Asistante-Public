@@ -8,18 +8,27 @@
 
 import UIKit
 
-class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource
-{
+protocol TasksTVCDelegate {
+    func didSaved(name: String, description: String, date: Date, state: Int)
+    func didSaveNew(name: String, description: String, date: Date, state: Int)
+}
+
+class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let cellContents: [String] = ["Due Date", "Set Reminder", "Invite Friends"]
+    var taskDelegate: TasksTVCDelegate?
+    
+    var taskTypeDetail:String = ""
+    
+    let cellContents: [String] = ["Due Date", "Set Reminder", "Invite Friends", "Set Priority"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addTaskCell", for: indexPath)
         cell.textLabel?.text = cellContents[indexPath.row]
+        if indexPath.row == 3 {cell.detailTextLabel?.text = taskTypeDetail}
         return cell
     }
     
@@ -28,27 +37,20 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         else if indexPath.row == 1 {
             performSegue(withIdentifier: "addReminderSegue", sender: self)
         }
-        else {}
+        else if indexPath.row == 3 {
+            performSegue(withIdentifier: "setPrioritySegue", sender: self)
+        }
     }
     
     
-    
-    
-    
-    
-    @IBOutlet weak var taskStatePicker: UIPickerView!
     @IBOutlet weak var taskTitleTextField: UITextField!
-    @IBOutlet weak var taskDescriptionTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var addTaskButton: UIButton!
     
-    
-    
-    var tasksPicker: [String] = [String]()
-    
-    
-    struct TasksDataModel {
-        
-    }
+//
+//    struct TasksDataModel {
+//
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,10 +59,20 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.taskStatePicker.delegate = self
-        self.taskStatePicker.dataSource = self
-        tasksPicker = ["Regular","Important","Urgent"]
+        //taskTypeDetail = taskType
+
+//        self.taskStatePicker.delegate = self
+//        self.taskStatePicker.dataSource = self
+        //tabBarController?.tabBar.isHidden = true
         addTaskButton.layer.cornerRadius = 25
+        
+        if descriptionTextView.text == "" {
+            descriptionTextView.text = "Description"
+            descriptionTextView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.7764705882, alpha: 1)
+        }
+        else {
+            return
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -141,24 +153,38 @@ class NewTaskVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         
     
     //PickerView Setup.
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return tasksPicker.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return tasksPicker[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let chosenState = row
-        print (chosenState)
-    }
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return tasksPicker.count
+//    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return tasksPicker[row]
+//    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        let chosenState = row
+//        print (chosenState)
+//    }
     
     
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        if taskTitleTextField.text == "" {
+//        let nameToSave = taskTitleTextField.text
+//        let descriptionToSave = descriptionTextView.text
+//        let dateToSave = ""
+        
+        tabBarController?.selectedIndex = 0
+            
+        }
+        
+        else {
+            
+        }
+        
+        
     }
     
     

@@ -12,6 +12,8 @@ struct Notifications {
     var notificationTitle:String
 }
 
+var taskType:String = "Low"
+
 //Tasks data struct declared here.
 
 
