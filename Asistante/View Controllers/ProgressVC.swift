@@ -16,7 +16,6 @@ class ProgressVC: UIViewController {
     
 
     //Declare UI components here
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var completedTasksLabel: UILabel!
     @IBOutlet weak var remainingTasksLabel: UILabel!
     @IBOutlet weak var delayedTasksLabel: UILabel!
