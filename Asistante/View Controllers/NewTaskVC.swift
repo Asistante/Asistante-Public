@@ -28,7 +28,8 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addTaskCell", for: indexPath)
         cell.textLabel?.text = cellContents[indexPath.row]
-        if indexPath.row == 3 {cell.detailTextLabel?.text = taskTypeDetail}
+        if indexPath.row == 1 {cell.detailTextLabel?.text = dateshown}
+        else if indexPath.row == 3 {cell.detailTextLabel?.text = taskTypeDetail}
         return cell
     }
     
@@ -59,12 +60,16 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //title = "Add Task"
         //taskTypeDetail = taskType
 
 //        self.taskStatePicker.delegate = self
 //        self.taskStatePicker.dataSource = self
         //tabBarController?.tabBar.isHidden = true
-        addTaskButton.layer.cornerRadius = 25
+        
+//        addTaskButton.layer.cornerRadius = 25
         
         if descriptionTextView.text == "" {
             descriptionTextView.text = "Description"
@@ -75,6 +80,10 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     //Blur effect for alert view. Set parameter true to show, false to dismiss.
@@ -169,23 +178,22 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //    }
     
     
-    @IBAction func addTaskButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
-        if taskTitleTextField.text == "" {
-//        let nameToSave = taskTitleTextField.text
-//        let descriptionToSave = descriptionTextView.text
-//        let dateToSave = ""
-        
-        tabBarController?.selectedIndex = 0
-            
-        }
-        
-        else {
-            
-        }
-        
-        
+         if taskTitleTextField.text == "" {
+        //        let nameToSave = taskTitleTextField.text
+        //        let descriptionToSave = descriptionTextView.text
+        //        let dateToSave = ""
+                
+                tabBarController?.selectedIndex = 0
+                    
+                }
+                
+                else {
+                    
+                }
     }
+    
     
     
     /*

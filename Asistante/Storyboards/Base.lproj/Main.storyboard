@@ -336,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uED-Zf-CLN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1025" y="343"/>
+            <point key="canvasLocation" x="-1026" y="360"/>
         </scene>
         <!--UITabBarController-->
         <scene sceneID="yl2-sM-qoP">
@@ -351,7 +351,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="lNZ-8N-KuA" kind="relationship" relationship="viewControllers" id="nx9-Cn-pbv"/>
-                        <segue destination="qQN-ut-zLU" kind="relationship" relationship="viewControllers" id="Fmp-MB-V7W"/>
+                        <segue destination="VaF-sQ-rHs" kind="relationship" relationship="viewControllers" id="Fmp-MB-V7W"/>
                         <segue destination="Mh5-hS-1cH" kind="relationship" relationship="viewControllers" id="FwT-aK-a1r"/>
                     </connections>
                 </tabBarController>
@@ -424,14 +424,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usS-Yw-XHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1022" y="1065"/>
+            <point key="canvasLocation" x="-1026" y="1073"/>
         </scene>
         <!--Add Task-->
         <scene sceneID="Pv1-Jz-qfc">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="qQN-ut-zLU" customClass="NewTaskVC" customModule="Asistante" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qQN-ut-zLU" customClass="NewTaskVC" customModule="Asistante" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJe-Pa-qu5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzi-0n-HAr">
@@ -503,18 +503,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfU-zg-uGK">
-                                <rect key="frame" x="21" y="656" width="374" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.96554285289999997" green="0.66072422269999997" blue="0.026636179539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Add Task">
-                                    <color key="titleColor" red="0.35423574270557034" green="0.26816404321115789" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="addTaskButtonPressed:" destination="qQN-ut-zLU" eventType="touchUpInside" id="qh5-XZ-71I"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="YiP-2k-xHP"/>
@@ -524,29 +512,65 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="addTaskButton" id="uO0-mJ-Qw2"/>
-                    <navigationItem key="navigationItem" title="Add Task" id="Tiw-VN-Ndy"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="Add Task" id="Tiw-VN-Ndy">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="VYm-Yd-wWW">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="qQN-ut-zLU" id="s48-YW-kCy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addTaskButton" destination="pfU-zg-uGK" id="G9D-X1-S8L"/>
                         <outlet property="descriptionTextView" destination="WZW-eO-U27" id="wL4-Vo-VsT"/>
                         <outlet property="taskTitleTextField" destination="YJK-ac-vYF" id="1op-xr-e9x"/>
                         <segue destination="HhV-Od-f8X" kind="unwind" identifier="unwindToTabBar" unwindAction="saveButtonPressed:sender:" id="11t-lr-Ymt"/>
-                        <segue destination="laN-Vg-4Vx" kind="show" identifier="addReminderSegue" id="CoB-ET-RoM"/>
-                        <segue destination="nqa-An-TiS" kind="show" identifier="setPrioritySegue" id="dC9-f0-DQQ"/>
+                        <segue destination="nqa-An-TiS" kind="show" identifier="setPrioritySegue" id="Sc6-XU-gig"/>
+                        <segue destination="tiL-0S-F3T" kind="show" identifier="addReminderSegue" id="i3e-gJ-oT6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCq-hK-YY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="HhV-Od-f8X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="1073"/>
+            <point key="canvasLocation" x="879.71014492753625" y="1072.7678571428571"/>
+        </scene>
+        <!--Add ReminderVC-->
+        <scene sceneID="uFn-oz-DLq">
+            <objects>
+                <viewController id="tiL-0S-F3T" customClass="AddReminderVC" customModule="Asistante" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gVd-qD-Mw7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="d9T-AT-m9K">
+                                <rect key="frame" x="0.0" y="313" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjr-lJ-O1Z">
+                                <rect key="frame" x="184" y="573" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="tiL-0S-F3T" eventType="touchUpInside" id="CcN-uq-lxh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="mgg-eh-kUK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hO5-c9-UKY"/>
+                    <connections>
+                        <outlet property="reminderDatePicker" destination="d9T-AT-m9K" id="IXy-eq-JpQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVC-x0-bJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="1769"/>
         </scene>
         <!--Set Task Priority-->
         <scene sceneID="UmI-wa-pYX">
             <objects>
                 <viewController id="nqa-An-TiS" customClass="TaskPriorityVC" customModule="Asistante" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8xh-Bb-v6L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dn6-mD-Bay">
@@ -594,23 +618,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4d-vy-XHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mUO-TH-o3f" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="1799"/>
-        </scene>
-        <!--Add Reminder-->
-        <scene sceneID="OM4-yv-0nv">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="laN-Vg-4Vx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kdG-JA-56a">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="XG7-Ks-fok"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Reminder" id="fd9-LL-c52"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iSH-3f-4Ii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="768" y="1073"/>
+            <point key="canvasLocation" x="1657.9710144927537" y="1072.7678571428571"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="8Tn-jz-y93">
@@ -634,10 +642,29 @@
             </objects>
             <point key="canvasLocation" x="749" y="-317"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e4c-y5-d84">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VaF-sQ-rHs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="addTaskButton" selectedImage="addTaskButton" springLoaded="YES" id="uO0-mJ-Qw2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="knS-wF-AB0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qQN-ut-zLU" kind="relationship" relationship="rootViewController" id="88Q-Ru-DK0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b9l-nr-0z4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30.434782608695656" y="1072.7678571428571"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="G5j-rx-7w7"/>
-        <segue reference="RI6-Gr-pyL"/>
+        <segue reference="5xp-3s-m5x"/>
+        <segue reference="jpK-hL-wl8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RectBorder" width="413" height="42"/>

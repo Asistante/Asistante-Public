@@ -25,6 +25,7 @@
 		4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153882438DE7E007F3E76 /* NewTaskVC.swift */; };
 		4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */; };
 		4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */; };
+		4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB78B2243F655A00764B13 /* AddReminderVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4F9153882438DE7E007F3E76 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
 		4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameVC.swift; sourceTree = "<group>"; };
 		4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriorityVC.swift; sourceTree = "<group>"; };
+		4FEB78B2243F655A00764B13 /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
 				4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */,
 				4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */,
+				4FEB78B2243F655A00764B13 /* AddReminderVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
 				4F65B0F72431D38200BF24A0 /* ProgressVC.swift in Sources */,
 				4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */,
+				4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */,
 				4F65B0FD2431D38200BF24A0 /* Asistante.xcdatamodeld in Sources */,
 				4F1B103C243B2CB600C3DDA1 /* DataModel.swift in Sources */,
 				4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */,

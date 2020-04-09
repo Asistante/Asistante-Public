@@ -16,9 +16,14 @@ class TaskPriorityVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         tasksPicker = ["Important","Moderate","Low", "Assisted"]
+        tabBarController?.tabBar.isHidden = true
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
