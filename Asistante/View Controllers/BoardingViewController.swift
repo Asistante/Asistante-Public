@@ -33,23 +33,11 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.bool(forKey: "FirstLaunch") == true {
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "skipSegue", sender: self)
-                print("Segue performed - user defaults returned true!")
-            }
-        }
-        
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         UserDefaults.standard.bool(forKey: "FirstLaunch")
-        
-        
-        
-       
         
         //to call viewDidLayoutSubviews() and get dynamic width and height of scrollview
 
@@ -101,6 +89,17 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
             PageControl.currentPage = 0
 
          }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "FirstLaunch") == true {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "skipSegue", sender: self)
+                print("Segue performed - user defaults returned true!")
+            }
+        }
+        
+    }
+    
     //indicator
     @IBAction func pageChanged(_ sender: Any) {
         ScrollView!.scrollRectToVisible(CGRect(x: scrollWidth * CGFloat ((PageControl?.currentPage)!), y: 0, width: scrollWidth, height: scrollHeight), animated: true)

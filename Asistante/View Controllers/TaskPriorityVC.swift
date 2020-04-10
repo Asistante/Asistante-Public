@@ -9,16 +9,26 @@
 import UIKit
 
 class TaskPriorityVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var tasksPicker: [String] = [String]()
+    var taskPriority:String = ""
+    var newTaskDelegate: NewTaskDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tasksPicker = ["Important","Moderate","Low", "Assisted"]
+        tabBarController?.tabBar.isHidden = true
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,7 +57,8 @@ class TaskPriorityVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //let sentState = tasksPicker[indexPath.row]
-        taskType = tasksPicker[indexPath.row]
+        taskPriority = tasksPicker[indexPath.row]
+        newTaskDelegate?.passPriority(priority: taskPriority)
         self.navigationController?.popViewController(animated: true)
     }
     

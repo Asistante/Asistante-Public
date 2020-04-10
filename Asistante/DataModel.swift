@@ -13,7 +13,7 @@ struct Notifications {
 }
 
 var taskType:String = "Low"
-
+var dateshown:String = ""
 //Tasks data struct declared here.
 
 
