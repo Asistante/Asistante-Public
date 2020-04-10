@@ -8,18 +8,38 @@
 
 import UIKit
 
-protocol TasksTVCDelegate {
-    func didSaved(name: String, description: String, date: Date, state: Int)
-    func didSaveNew(name: String, description: String, date: Date, state: Int)
-}
-
-class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NewTaskDelegate {
     
+    func passDate(date: Date) {
+        dueDate = date
+        tableView.reloadData()
+    }
+    
+    func passReminder(date: String){
+        taskReminderDate = date
+        print("Contents of TDR: \(taskReminderDate), received parameter date: \(date)")
+        tableView.reloadData()
+    }
+    func passPriority(priority: String){
+        taskTypeDetail = priority
+        print("Contents of priority: \(taskTypeDetail)")
+        tableView.reloadData()
+    }
+    
+    var dueDate = Date()
     var taskDelegate: TasksTVCDelegate?
     
-    var taskTypeDetail:String = ""
+    var taskTypeDetail:String = "Low"
+    var taskReminderDate:String = ""
     
     let cellContents: [String] = ["Due Date", "Set Reminder", "Invite Friends", "Set Priority"]
+    
+    
+    
+//    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+//        tableView.reloadData()
+//    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -28,13 +48,29 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addTaskCell", for: indexPath)
         cell.textLabel?.text = cellContents[indexPath.row]
-        if indexPath.row == 1 {cell.detailTextLabel?.text = dateshown}
-        else if indexPath.row == 3 {cell.detailTextLabel?.text = taskTypeDetail}
+        if indexPath.row == 0 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EE MMM d yyyy"
+            let cellLabel = dateFormatter.string(from: dueDate)
+            cell.detailTextLabel?.text = cellLabel
+            cell.detailTextLabel?.textColor = .gray
+            
+        }
+        else if indexPath.row == 1 {
+            cell.detailTextLabel?.text = taskReminderDate
+            cell.detailTextLabel?.textColor = .gray
+        }
+        else if indexPath.row == 3 {
+            cell.detailTextLabel?.text = taskTypeDetail
+            cell.detailTextLabel?.textColor = .gray
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {}
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "dueDateSegue", sender: self)
+        }
         else if indexPath.row == 1 {
             performSegue(withIdentifier: "addReminderSegue", sender: self)
         }
@@ -47,6 +83,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var taskTitleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
 //
 //    struct TasksDataModel {
@@ -61,6 +98,9 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        
+    
         
         //title = "Add Task"
         //taskTypeDetail = taskType
@@ -153,7 +193,17 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.destination is TasksTVC {
             
         }
+        if let destinationReminder = segue.destination as? AddReminderVC {
+            destinationReminder.newTaskDelegate = self
+        }
+        if let destinationDueDate = segue.destination as? AddDueDateVC {
+            destinationDueDate.newTaskDelegate = self
+        }
+        if let destinationPriority = segue.destination as? TaskPriorityVC {
+            destinationPriority.newTaskDelegate = self
+        }
     }
+    
     
 //    @IBAction func saveButtonPressed(_ unwindSegue: UIStoryboardSegue, sender: UIBarButtonItem) {
 //        performSegue(withIdentifier: "unwindToTabBar", sender: self)
@@ -180,7 +230,9 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
-         if taskTitleTextField.text == "" {
+         if taskTitleTextField.text != "" {
+            
+            
         //        let nameToSave = taskTitleTextField.text
         //        let descriptionToSave = descriptionTextView.text
         //        let dateToSave = ""
@@ -190,11 +242,28 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 else {
+            
+                        let alert = UIAlertController(title: "Error", message: "Task title cannot be empty.", preferredStyle: .alert)
+                            
+                            
+                            let backToAddTaskAction = UIAlertAction(title: "OK", style: .cancel){
+                                [unowned self] action in
+                                //self.blurEffect(state: false)
+                                print ("Dismissing alert.")
+                                
+                            }
+                            
+                            alert.addAction(backToAddTaskAction)
+                            
+                            //blurEffect(state: true)
+                            print ("Present blur effect.")
+                            present(alert, animated: true)
+                        }
                     
                 }
     }
     
-    
+
     
     /*
     // MARK: - Navigation
@@ -206,4 +275,4 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     */
 
-}
+

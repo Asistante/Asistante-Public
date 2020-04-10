@@ -26,6 +26,8 @@
 		4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */; };
 		4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */; };
 		4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB78B2243F655A00764B13 /* AddReminderVC.swift */; };
+		4FEB78B724408D6300764B13 /* DelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB78B624408D6300764B13 /* DelegateProtocol.swift */; };
+		4FEB78B9244094EF00764B13 /* AddDueDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB78B8244094EF00764B13 /* AddDueDateVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameVC.swift; sourceTree = "<group>"; };
 		4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriorityVC.swift; sourceTree = "<group>"; };
 		4FEB78B2243F655A00764B13 /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
+		4FEB78B624408D6300764B13 /* DelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateProtocol.swift; sourceTree = "<group>"; };
+		4FEB78B8244094EF00764B13 /* AddDueDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDueDateVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			children = (
 				4F65B0F02431D38200BF24A0 /* AppDelegate.swift */,
 				4F65B0F22431D38200BF24A0 /* SceneDelegate.swift */,
+				4FEB78B624408D6300764B13 /* DelegateProtocol.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -75,16 +80,17 @@
 		4F1B1033243B284400C3DDA1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F65B0F42431D38200BF24A0 /* TasksTVC.swift */,
-				4F65B0F62431D38200BF24A0 /* ProgressVC.swift */,
-				4F9153822438D3B1007F3E76 /* TabBarController.swift */,
-				4F9153882438DE7E007F3E76 /* NewTaskVC.swift */,
-				4F1B1037243B2C2B00C3DDA1 /* NotificationTVC.swift */,
 				4F65B10924334DFF00BF24A0 /* BoardingViewController.swift */,
-				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
 				4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */,
+				4F9153822438D3B1007F3E76 /* TabBarController.swift */,
+				4F65B0F42431D38200BF24A0 /* TasksTVC.swift */,
+				4F9153882438DE7E007F3E76 /* NewTaskVC.swift */,
+				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
 				4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */,
+				4FEB78B8244094EF00764B13 /* AddDueDateVC.swift */,
 				4FEB78B2243F655A00764B13 /* AddReminderVC.swift */,
+				4F65B0F62431D38200BF24A0 /* ProgressVC.swift */,
+				4F1B1037243B2C2B00C3DDA1 /* NotificationTVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -210,9 +216,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F1B1038243B2C2B00C3DDA1 /* NotificationTVC.swift in Sources */,
+				4FEB78B724408D6300764B13 /* DelegateProtocol.swift in Sources */,
 				4F1B103A243B2C9600C3DDA1 /* EditTaskVC.swift in Sources */,
 				4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */,
 				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
+				4FEB78B9244094EF00764B13 /* AddDueDateVC.swift in Sources */,
 				4F65B0F72431D38200BF24A0 /* ProgressVC.swift in Sources */,
 				4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */,
 				4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */,
