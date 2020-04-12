@@ -77,11 +77,16 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM HH:mm"
             let cellLabel = dateFormatter.string(from: taskReminderDate)
-            cell.detailTextLabel?.text = cellLabel
+            cell.detailTextLabel?.text = "Coming Soon"//cellLabel
             cell.detailTextLabel?.textColor = .gray
         }
         else if indexPath.row == 3 {
             cell.detailTextLabel?.text = taskTypeDetail
+            cell.detailTextLabel?.textColor = .gray
+        }
+        
+        else {
+            cell.detailTextLabel?.text = "Coming Soon"
             cell.detailTextLabel?.textColor = .gray
         }
         return cell
@@ -92,7 +97,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
             performSegue(withIdentifier: "dueDateSegue", sender: self)
         }
         else if indexPath.row == 1 {
-            performSegue(withIdentifier: "addReminderSegue", sender: self)
+            //performSegue(withIdentifier: "addReminderSegue", sender: self)
         }
         else if indexPath.row == 3 {
             performSegue(withIdentifier: "setPrioritySegue", sender: self)

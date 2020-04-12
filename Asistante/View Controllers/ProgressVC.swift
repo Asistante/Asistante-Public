@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-protocol ProgressVCDelegate: class {
-    func removeParentButton()
-}
+
 
 class ProgressVC: UIViewController {
+    
+    
     
     //Declare UI components here
    @IBOutlet weak var userNameLabel: UILabel!
@@ -43,12 +44,70 @@ class ProgressVC: UIViewController {
       
       @IBOutlet weak var notificationButton: UIBarButtonItem!
     
-    var addButton: UIButton!
     
-    weak var delegate: ProgressVCDelegate?
+    var addButton: UIButton!
+    var taskcount:Int = 0
+    var completedtaskcount:Int = 0
+    var ongoingtaskcount:Int = 0
+    var context:NSManagedObjectContext?
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        self.showSpinner(onView: self.view)
+        
+            
+        completedtaskcount = 0
+        ongoingtaskcount = 0
+        
+        super.viewDidAppear(animated)
+        
+        
+        self.taskcount = UserDefaults.standard.integer(forKey: "taskCount")
+        self.completedtaskcount = UserDefaults.standard.integer(forKey: "completedTaskCount")
+        self.ongoingtaskcount = UserDefaults.standard.integer(forKey: "ongoingTaskCount")
+        
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, dd MMMM"
+        let result = formatter.string(from: currentDate)
+        monthLabel.text = result
+        
+        
+        onGoingAll.text = "/ \(taskcount)"
+        completedAll.text = "/ \(taskcount)"
+        failedAll.text = "/ \(taskcount)"
+        
+        let completeCount = String(completedtaskcount)
+        completedNow.text = completeCount
+        let ongoingCount = String(ongoingtaskcount)
+        onGoingNow.text = ongoingCount
+        
+        var overallProgressFloat:Float = 0
+        if completedtaskcount == 0 || taskcount == 0 {
+            overallProgressFloat = 0.0
+        }
+        else {
+            overallProgressFloat = Float(completedtaskcount) / Float(taskcount)
+        }
+        print (overallProgressFloat)
+        
+        let overallProgress = String(Int(overallProgressFloat*100))
+        progressLabel.text = "\(overallProgress)%"
+        
+        let progressBarProcessWidth = Float(progressBarFull.frame.width) * overallProgressFloat
+        
+        var progressBarProcessWidthFinal = progressBarProcessWidth
+        
+        if progressBarProcessWidth == 0 {
+            progressBarProcessWidthFinal += 10
+        }
+        else {
+            progressBarProcessWidthFinal = progressBarProcessWidth
+        }
+        progressBarProcess.frame = CGRect(x: 0, y: 0, width: CGFloat(progressBarProcessWidthFinal), height: progressBarFull.frame.height)
+        progressLabel.frame = CGRect(x: 0, y: 0, width: CGFloat(progressBarProcessWidthFinal), height: progressBarFull.frame.height)
+        self.removeSpinner()
         
     }
     
@@ -97,7 +156,9 @@ class ProgressVC: UIViewController {
                 return
             }
         
-        userNameLabel.text = "Hello, \(progressPageUsername)"
+        
+        
+        userNameLabel.text = "Hello, \(progressPageUsername)!"
         // Do any additional setup after loading the view.
         //setupMiddleButton()
     }
