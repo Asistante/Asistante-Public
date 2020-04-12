@@ -12,45 +12,6 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
-   // var defaults: UserDefaults!
-    
-    
-//    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//
-//        UserDefaults.standard.bool(forKey: "FirstLaunch")
-//
-//        let firstLaunch = defaults.bool(forKey:"FirstLaunch")
-//
-//        if firstLaunch {
-//            print("Not first launch.")
-//
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//            let initialViewController = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as! UITabBarController
-//
-//            self.window?.rootViewController = initialViewController
-//            self.window?.makeKeyAndVisible()
-//
-//
-//          } else {
-//            print("First launch, setting NSUserDefault.")
-//
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BoardingViewController") as UIViewController
-//
-//            self.window?.rootViewController = initialViewController
-//            self.window?.makeKeyAndVisible()
-//
-//          }
-//
-//          return true
-//        }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

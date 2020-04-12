@@ -9,7 +9,12 @@
 import UIKit
 import CoreData
 
+var managedContext:NSManagedObjectContext?
+
+
 class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, TasksTVCDelegate {
+    
+    
     
     // Declare all IBOutlets here for UI elements.
         //Tasks table view declaration.
@@ -35,7 +40,7 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
     
         
     //Core Data context.
-    var context:NSManagedObjectContext?
+    
     
  //Tasks struct. Data is fetched from Core Data; will be called from appDelegate
     struct Tasks {
@@ -52,63 +57,14 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
     }
     
     func didSaveNew(name: String, description: String, date: Date, state: Int) {
-        print("\(tasks.taskName) and \(tasks.taskDescription) and \(tasks.taskDate) and \(tasks.taskState)")
+        print("\(name) and \(description) and \(date) and \(state)")
         saveNew(name: name, description: description, date: date, state: state)
     }
     
-    func saveNew(name:String, description:String, date: Date, state:Int){
-        
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Tasks",
-                                       in: context!)
-                                               
-        let tasks = NSManagedObject(entity: entity!,
-                                       insertInto: context)
-        
-        tasks.setValue(name, forKeyPath: "taskName")
-        tasks.setValue(description, forKeyPath: "taskDescription")
-        tasks.setValue(date, forKeyPath: "taskDate")
-        tasks.setValue(state, forKeyPath: "taskState")
-        //4
-        
-        do {
-            
-            self.tasks.taskName.append(tasks)
-            self.tasks.taskDescription.append(tasks)
-            self.tasks.taskDate.append(tasks)
-            self.tasks.taskState.append(tasks)
-        
-            try context!.save()
-            
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-//        print (self.tasks.count)
-//        print (subentries.count)
-//        print (date.count)
-        tableView.reloadData()
-    }
-    
-    func save(name: String, description: String, date:Date, state:Int){
-        
-        
-        tasks.taskName[currentIndex].setValue(name, forKey: "taskName")
-        tasks.taskDescription[currentIndex].setValue(description, forKey: "taskDescription")
-        tasks.taskDate[currentIndex].setValue(date, forKey: "taskDate")
-        tasks.taskState[currentIndex].setValue(state, forKey: "taskState")
-        
-        do {
-            try context!.save()
-            //try context!.save()
-            tableView.reloadData()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-            
-        }
-    }
     
     var tasks:Tasks = Tasks()
+    
+    
     //Declare cell types for table view.
     
     
@@ -117,8 +73,29 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
 //        case inactiveTasksCell
 //    }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        
+        managedContext = appDelegate.persistentContainer.viewContext
+        print("Managed Context:\(String(describing: managedContext))")
+            
+            let fetchRequest =
+                NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+            
+            do{
+                print("Fetch request to Core Data. Sender: TasksTVC")
+                
+                tasks = Tasks(taskName: try managedContext!.fetch(fetchRequest), taskDescription: try managedContext!.fetch(fetchRequest), taskDate: try managedContext!.fetch(fetchRequest), taskState: try managedContext!.fetch(fetchRequest))
+            
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        print ("Fetch entry count \(tasks.taskName.count)")
+        print ("Fetch sub-entry count \(tasks.taskDescription.count)")
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -127,27 +104,9 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
 //        self.view.setNeedsLayout()
 //        self.view.layoutIfNeeded()
         
-        
         //Core Data settings
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
         
-            context = appDelegate.persistentContainer.viewContext
-            
-            let fetchRequest =
-                NSFetchRequest<NSManagedObject>(entityName: "Tasks")
-            
-            do{
-                print("Fetch request to Core Data. Sender: TasksTVC")
-                
-                tasks = Tasks(taskName: try context!.fetch(fetchRequest), taskDescription: try context!.fetch(fetchRequest), taskDate: try context!.fetch(fetchRequest), taskState: try context!.fetch(fetchRequest))
-            
-                
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
         
         //TableView settings here
         tableView.tableFooterView = UIView()
@@ -165,6 +124,62 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
         // Do any additional setup after loading the view.
     }
     
+    func saveNew(name:String, description:String, date: Date, state:Int){
+        
+        print ("Show \(String(describing: managedContext))")
+            
+        let entity = NSEntityDescription.entity(forEntityName: "Tasks",
+                                                    in: managedContext!)
+                                                   
+        let tasks = NSManagedObject(entity: entity!,
+                                           insertInto: managedContext)
+            
+            tasks.setValue(name, forKeyPath: "taskName")
+            tasks.setValue(description, forKeyPath: "taskDescription")
+            tasks.setValue(date, forKeyPath: "taskDate")
+            tasks.setValue(state, forKeyPath: "taskState")
+            //4
+            
+            do {
+                
+                self.tasks.taskName.append(tasks)
+                self.tasks.taskDescription.append(tasks)
+                self.tasks.taskDate.append(tasks)
+                self.tasks.taskState.append(tasks)
+            
+                try managedContext!.save()
+                print ("Data posted")
+                //tableView.reloadData()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        }
+        
+        func save(name: String, description: String, date:Date, state:Int){
+            
+            
+            tasks.taskName[currentIndex].setValue(name, forKey: "taskName")
+            tasks.taskDescription[currentIndex].setValue(description, forKey: "taskDescription")
+            tasks.taskDate[currentIndex].setValue(date, forKey: "taskDate")
+            tasks.taskState[currentIndex].setValue(state, forKey: "taskState")
+            
+            do {
+                try managedContext!.save()
+                //try context!.save()
+                //tableView.reloadData()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+                
+            }
+        }
+    
+    func didUpdateTableView(sender: NewTaskVC) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     
     //Declare Tasks Table View properties here.
         var currentIndex:Int = 0
@@ -173,16 +188,144 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
             return tasks.taskName.count
         }
         func numberOfSections(in tableView: UITableView) -> Int {
-            return 2
+            return 1
         }
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             //Active tasks cell
             let activeTasksCell = tableView.dequeueReusableCell(withIdentifier: "activeTasksCell", for: indexPath)
+            let taskname = tasks.taskName[indexPath.row]
+            let tasksub = tasks.taskDescription[indexPath.row]
+            activeTasksCell.textLabel?.text = taskname.value(forKeyPath: "taskName") as? String
+            activeTasksCell.detailTextLabel?.text = tasksub.value(forKeyPath: "taskDescription") as? String
             return activeTasksCell
         }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+//    func tableView(_ tableView: UITableView,
+//      leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+//
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentIndex = indexPath.row
+        performSegue(withIdentifier: "editTaskSegue", sender: self)
     }
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .normal, title: "Mark Complete") { (contextualAction, view, boolValue) in
+            boolValue(true) // pass true if you want the handler to allow the action
+            print("Leading Action style .normal")
+            
+            let alert = UIAlertController(title: "🥳 Hooray 🥳", message: "Congratulations, you have completed your task. Keep going!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(action)
+            
+            self.present(alert, animated: true)
+        }
+        contextItem.backgroundColor = .orange
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+
+        return swipeActions
+    }
+    
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){// -> [UITableViewRowAction]?{
+
+           //        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+           //                       tableView.isEditing = false
+           //
+           //           // your action
+           //                   }
+           //
+           //        editAction.backgroundColor = UIColor.gray
+
+           switch editingStyle {
+            
+           case .insert:
+            
+            print("insert")
+
+
+           case .delete:
+
+            print("entry \(tasks.taskName.count)")
+            tasks.taskName.remove(at: indexPath.row)
+            tasks.taskDescription.remove(at: indexPath.row)
+            tasks.taskDate.remove(at: indexPath.row)
+            tasks.taskState.remove(at: indexPath.row)
+
+
+                //2
+                let fetchRequest =
+                    NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+
+                //3
+                do{
+                    print("show")
+                    tasks.taskName = try managedContext!.fetch(fetchRequest)
+                    let resultData = tasks.taskName
+                    //let pushData = resultData[indexPath.row]}
+
+                    tasks.taskDescription = try managedContext!.fetch(fetchRequest)
+                    let resultData2 = tasks.taskDescription
+                    //let pushData2 = resultData2[indexPath.row]
+                    tasks.taskDate = try managedContext!.fetch(fetchRequest)
+                    let resultData3 = tasks.taskDate
+                    tasks.taskState = try managedContext!.fetch(fetchRequest)
+                    let resultData4 = tasks.taskState
+                                   //let pushData2 = resultData2[indexPath.row]
+
+                    for _ in resultData {
+                        managedContext?.delete(tasks.taskName[indexPath.row])
+                    }
+
+                    for _ in resultData2 {
+                        managedContext?.delete(tasks.taskDescription[indexPath.row])
+                    }
+
+                    for _ in resultData3 {
+                        managedContext?.delete(tasks.taskDate[indexPath.row])
+
+                    }
+
+                    for _ in resultData4 {
+                    managedContext?.delete(tasks.taskState[indexPath.row])
+
+                    }
+                }
+
+                 catch let error as NSError {
+                    print("Could not fetch. \(error), \(error.userInfo)")
+                }
+
+
+            print("entry after \(tasks.taskName.count)")
+                do {
+                    try managedContext!.save()
+                    //try context!.save()
+                    tasks.taskName.remove(at: indexPath.row)
+                    tasks.taskDescription.remove(at: indexPath.row)
+                    tasks.taskDate.remove(at: indexPath.row)
+                    tasks.taskState.remove(at: indexPath.row)
+
+                }catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+                //self.tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.reloadData()
+
+            
+
+                //print ("insert selected!")
+
+           default: return
+
+        }
+    }
+    
         
         func placeholderState () {
             if tasks.taskName.count != 0 {
@@ -198,8 +341,22 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Ta
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       // self.hidesBottomBarWhenPushed = true
+         if let destinationNewTask = segue.destination as? NewTaskVC {
+            destinationNewTask.taskDelegate = self
+               }
+        if let destinationEditTask = segue.destination as? EditTaskVC {
+            let taskname = tasks.taskName[currentIndex]
+            let tasksub = tasks.taskDescription[currentIndex]
+            let taskdate = tasks.taskDate[currentIndex]
+            let taskstate = tasks.taskDescription[currentIndex]
+            destinationEditTask.textFieldContent = (taskname.value(forKeyPath: "taskName") as? String)!
+            destinationEditTask.textViewContent = (tasksub.value(forKeyPath: "taskDescription") as? String)!
+            destinationEditTask.taskDetailInt = (taskstate.value(forKeyPath: "taskState") as? Int)!
+            destinationEditTask.dueDate = (taskdate.value(forKeyPath: "taskDate") as? Date)!
+            destinationEditTask.taskDelegate = self
+        }
     }
+    
     
     @IBAction func notificationButtonPressed(_ sender: UIBarButtonItem) {
         //self.hidesBottomBarWhenPushed = true

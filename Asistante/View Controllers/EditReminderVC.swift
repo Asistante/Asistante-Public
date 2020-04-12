@@ -1,21 +1,18 @@
 //
-//  AddReminderVC.swift
+//  EditReminderVC.swift
 //  Asistante
 //
-//  Created by Domenico Allegra on 09/04/20.
+//  Created by Domenico Allegra on 12/04/20.
 //  Copyright © 2020 com.tjakep. All rights reserved.
 //
 
 import UIKit
 
+class EditReminderVC: UIViewController {
 
-
-class AddReminderVC: UIViewController, UIPickerViewDelegate {
-    
     
     @IBOutlet weak var reminderDatePicker: UIDatePicker!
-    
-    var newTaskDelegate: NewTaskDelegate?
+    var editTaskDelegate: EditTaskDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +23,7 @@ class AddReminderVC: UIViewController, UIPickerViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        newTaskDelegate?.passReminder(date: self.reminderDatePicker.date)
+        editTaskDelegate?.passReminder(date: self.reminderDatePicker.date)
     }
     
 

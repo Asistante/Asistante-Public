@@ -97,6 +97,9 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
                 print("Segue performed - user defaults returned true!")
             }
         }
+        if pageCount == 0 {
+            backButton.setTitle("", for: .normal)
+        }
         
     }
     
@@ -124,6 +127,7 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
    //scroll onboarding with buttons
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        backButton.setTitle("Back", for: .normal)
         if pageCount < 3 {
             pageCount += 1
             self.scrollToPage(page: pageCount, animated: true)
@@ -144,6 +148,10 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func backButtonPressed(_ sender: Any) {
         
+        if pageCount == 1 {
+            backButton.setTitle("", for: .normal)
+        }
+        
         if pageCount > 0 {
             pageCount -= 1
             self.scrollToPage(page: pageCount, animated: true)
@@ -152,6 +160,7 @@ class BoardingViewController: UIViewController, UIScrollViewDelegate {
         }
         else {
             PageControl.currentPage = pageCount
+            
             return
             
         }

@@ -11,11 +11,19 @@ import Foundation
 protocol TasksTVCDelegate {
     func didSaved(name: String, description: String, date: Date, state: Int)
     func didSaveNew(name: String, description: String, date: Date, state: Int)
+    func didUpdateTableView(sender: NewTaskVC)
 }
 
 protocol NewTaskDelegate {
     func passDate(date:Date)
-    func passReminder(date:String)
+    func passReminder(date:Date)
+    func passPriority(priority:String)
+    
+}
+
+protocol EditTaskDelegate {
+    func passDate(date:Date)
+    func passReminder(date:Date)
     func passPriority(priority:String)
     
 }

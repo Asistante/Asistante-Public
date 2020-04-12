@@ -23,6 +23,9 @@
 		4F9153812438A826007F3E76 /* InactiveTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153802438A826007F3E76 /* InactiveTaskCell.swift */; };
 		4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153822438D3B1007F3E76 /* TabBarController.swift */; };
 		4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153882438DE7E007F3E76 /* NewTaskVC.swift */; };
+		4FAACE9A2443048600DF90F0 /* EditPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE992443048600DF90F0 /* EditPriorityVC.swift */; };
+		4FAACE9C2443070C00DF90F0 /* EditReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE9B2443070C00DF90F0 /* EditReminderVC.swift */; };
+		4FAACE9E2443073300DF90F0 /* EditDueDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE9D2443073300DF90F0 /* EditDueDateVC.swift */; };
 		4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */; };
 		4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */; };
 		4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB78B2243F655A00764B13 /* AddReminderVC.swift */; };
@@ -49,6 +52,9 @@
 		4F9153802438A826007F3E76 /* InactiveTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveTaskCell.swift; sourceTree = "<group>"; };
 		4F9153822438D3B1007F3E76 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F9153882438DE7E007F3E76 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
+		4FAACE992443048600DF90F0 /* EditPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPriorityVC.swift; sourceTree = "<group>"; };
+		4FAACE9B2443070C00DF90F0 /* EditReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderVC.swift; sourceTree = "<group>"; };
+		4FAACE9D2443073300DF90F0 /* EditDueDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDueDateVC.swift; sourceTree = "<group>"; };
 		4FEA63F0243C8FA700731A2C /* EnterNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameVC.swift; sourceTree = "<group>"; };
 		4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriorityVC.swift; sourceTree = "<group>"; };
 		4FEB78B2243F655A00764B13 /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
@@ -85,10 +91,13 @@
 				4F9153822438D3B1007F3E76 /* TabBarController.swift */,
 				4F65B0F42431D38200BF24A0 /* TasksTVC.swift */,
 				4F9153882438DE7E007F3E76 /* NewTaskVC.swift */,
-				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
 				4FEA63F2243DCAED00731A2C /* TaskPriorityVC.swift */,
 				4FEB78B8244094EF00764B13 /* AddDueDateVC.swift */,
 				4FEB78B2243F655A00764B13 /* AddReminderVC.swift */,
+				4F1B1039243B2C9600C3DDA1 /* EditTaskVC.swift */,
+				4FAACE9D2443073300DF90F0 /* EditDueDateVC.swift */,
+				4FAACE9B2443070C00DF90F0 /* EditReminderVC.swift */,
+				4FAACE992443048600DF90F0 /* EditPriorityVC.swift */,
 				4F65B0F62431D38200BF24A0 /* ProgressVC.swift */,
 				4F1B1037243B2C2B00C3DDA1 /* NotificationTVC.swift */,
 			);
@@ -215,9 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAACE9E2443073300DF90F0 /* EditDueDateVC.swift in Sources */,
+				4FAACE9A2443048600DF90F0 /* EditPriorityVC.swift in Sources */,
 				4F1B1038243B2C2B00C3DDA1 /* NotificationTVC.swift in Sources */,
 				4FEB78B724408D6300764B13 /* DelegateProtocol.swift in Sources */,
 				4F1B103A243B2C9600C3DDA1 /* EditTaskVC.swift in Sources */,
+				4FAACE9C2443070C00DF90F0 /* EditReminderVC.swift in Sources */,
 				4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */,
 				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
 				4FEB78B9244094EF00764B13 /* AddDueDateVC.swift in Sources */,

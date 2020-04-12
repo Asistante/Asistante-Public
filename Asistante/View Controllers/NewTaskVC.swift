@@ -15,13 +15,29 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
         tableView.reloadData()
     }
     
-    func passReminder(date: String){
+    func passReminder(date: Date){
         taskReminderDate = date
         print("Contents of TDR: \(taskReminderDate), received parameter date: \(date)")
         tableView.reloadData()
     }
     func passPriority(priority: String){
         taskTypeDetail = priority
+        
+        if taskTypeDetail == "Low" {
+            taskDetailInt = 0
+        }
+        else if taskTypeDetail == "Moderate" {
+            taskDetailInt = 1
+            
+        }
+        else if taskTypeDetail == "Important" {
+            taskDetailInt = 2
+            
+        }
+        else {
+            taskDetailInt = 3
+        }
+        
         print("Contents of priority: \(taskTypeDetail)")
         tableView.reloadData()
     }
@@ -30,7 +46,8 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
     var taskDelegate: TasksTVCDelegate?
     
     var taskTypeDetail:String = "Low"
-    var taskReminderDate:String = ""
+    var taskDetailInt:Int = 0
+    var taskReminderDate = Date()
     
     let cellContents: [String] = ["Due Date", "Set Reminder", "Invite Friends", "Set Priority"]
     
@@ -57,7 +74,10 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
             
         }
         else if indexPath.row == 1 {
-            cell.detailTextLabel?.text = taskReminderDate
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM HH:mm"
+            let cellLabel = dateFormatter.string(from: taskReminderDate)
+            cell.detailTextLabel?.text = cellLabel
             cell.detailTextLabel?.textColor = .gray
         }
         else if indexPath.row == 3 {
@@ -98,6 +118,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        taskDelegate = TasksTVC()
         tableView.delegate = self
         
     
@@ -232,35 +253,30 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
         
          if taskTitleTextField.text != "" {
             
+            guard let nameToSave = taskTitleTextField.text else {return}
+            guard let descriptionToSave = descriptionTextView.text else {return}
+            let dateToSave = dueDate
+            let priorityToSave = taskDetailInt
+            taskDelegate?.didSaveNew(name: nameToSave, description: descriptionToSave, date: dateToSave, state: priorityToSave)
+            tabBarController?.selectedIndex = 0
+            //taskDelegate?.didUpdateTableView(sender: self)
+
             
-        //        let nameToSave = taskTitleTextField.text
-        //        let descriptionToSave = descriptionTextView.text
-        //        let dateToSave = ""
+        }
                 
-                tabBarController?.selectedIndex = 0
-                    
-                }
-                
-                else {
+            else {
             
                         let alert = UIAlertController(title: "Error", message: "Task title cannot be empty.", preferredStyle: .alert)
                             
                             
-                            let backToAddTaskAction = UIAlertAction(title: "OK", style: .cancel){
-                                [unowned self] action in
-                                //self.blurEffect(state: false)
-                                print ("Dismissing alert.")
-                                
-                            }
-                            
+                            let backToAddTaskAction = UIAlertAction(title: "OK", style: .cancel)
                             alert.addAction(backToAddTaskAction)
-                            
-                            //blurEffect(state: true)
-                            print ("Present blur effect.")
                             present(alert, animated: true)
                         }
                     
                 }
+    
+    
     }
     
 

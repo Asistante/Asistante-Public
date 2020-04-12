@@ -36,7 +36,19 @@ class EnterNameVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func goButtonPressed(_ sender: Any) {
-        goToMain()
+        
+        if nameTextField.text != "" {
+            goToMain()
+        }
+        else {
+            let alert = UIAlertController(title: "Oops!", message: "Nothing was entered. Please enter your name first!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(action)
+            
+            present(alert, animated: true)
+        }
+    
     }
     /*
     // MARK: - Navigation
