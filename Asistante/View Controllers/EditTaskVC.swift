@@ -121,7 +121,7 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         
         else {
-            cell.detailTextLabel?.text = "Coming Soon"
+            cell.detailTextLabel?.text = "Open WhatsApp"
             cell.detailTextLabel?.textColor = .gray
         }
         
@@ -135,6 +135,27 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else if indexPath.row == 1 {
             performSegue(withIdentifier: "addReminderEditSegue", sender: self)
         }
+            
+        else if indexPath.row == 2 {
+                   
+                   let dateFormatter = DateFormatter()
+                   dateFormatter.dateFormat = "dd/MM HH:mm"
+                   let datePost = dateFormatter.string(from: taskReminderDate)
+                                         
+                   let msg = "Hi buddy! I need your help to remind me to do this task! I have a task '\(textField.text!)' and it should be done on \(datePost). This task is very important for me. So, please help me! Thank you🤗"
+                   let urlWhats = "whatsapp://send?text=\(msg)"
+
+                   if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                   if let whatsappURL = NSURL(string: urlString) {
+                   if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+                   UIApplication.shared.openURL(whatsappURL as URL)
+                    } else {
+                    print("please install WhatsApp!")
+                   }
+               }
+           }
+        }
+            
         else if indexPath.row == 3 {
             performSegue(withIdentifier: "setPriorityEditSegue", sender: self)
         }

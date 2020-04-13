@@ -88,7 +88,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
         
         else {
-            cell.detailTextLabel?.text = "Coming Soon"
+            cell.detailTextLabel?.text = "Open WhatsApp"
             cell.detailTextLabel?.textColor = .gray
         }
         return cell
@@ -107,7 +107,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             dateFormatter.dateFormat = "dd/MM HH:mm"
             let datePost = dateFormatter.string(from: taskReminderDate)
                                   
-            let msg = "Hi buddy! I need your help to remind me to do this task! I have a \(taskTitleTextField.text!) and it should be done on \(datePost). This task is very important for me. So, please help me! Thank you🤗"
+            let msg = "Hi buddy! I need your help to remind me to do this task! I have a task '\(taskTitleTextField.text!)' and it should be done on \(datePost). This task is very important for me. So, please help me! Thank you🤗"
             let urlWhats = "whatsapp://send?text=\(msg)"
 
             if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
