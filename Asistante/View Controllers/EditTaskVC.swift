@@ -69,14 +69,14 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
            taskTypeDetail = priority
            
            if taskTypeDetail == "Low" {
-               taskDetailInt = 0
+               taskDetailInt = 2
            }
            else if taskTypeDetail == "Moderate" {
                taskDetailInt = 1
                
            }
            else if taskTypeDetail == "Important" {
-               taskDetailInt = 2
+               taskDetailInt = 0
                
            }
            else {

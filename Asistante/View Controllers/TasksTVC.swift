@@ -192,6 +192,7 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UN
         print ("Fetch sub-entry count \(tasks.taskDescription.count)")
         
         UserDefaults.standard.set(tasks.taskName.count, forKey: "taskCount")
+        
         tableView.reloadData()
     }
     
@@ -200,6 +201,7 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UN
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.separatorColor = .clear
         self.userNotificationCenter.delegate = self
         self.requestNotificationAuthorization()
         //self.sendNotification(title: "You have tasks", body: "Come back and check your tasks!", value: 1)
@@ -309,14 +311,89 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UN
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
+    
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+               return 120
+           }
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            //Active tasks cell
-            let activeTasksCell = tableView.dequeueReusableCell(withIdentifier: "activeTasksCell", for: indexPath)
-            let taskname = tasks.taskName[indexPath.row]
-            let tasksub = tasks.taskDescription[indexPath.row]
-            activeTasksCell.textLabel?.text = taskname.value(forKeyPath: "taskName") as? String
-            activeTasksCell.detailTextLabel?.text = tasksub.value(forKeyPath: "taskDescription") as? String
-            return activeTasksCell
+            
+            
+                        let taskstate = tasks.taskState[indexPath.row]
+                        let taskname = tasks.taskName[indexPath.row]
+                        let description = tasks.taskDescription[indexPath.row]
+                        let date = tasks.taskDate[indexPath.row]
+                        let active = tasks.taskIsActive[indexPath.row]
+                        let activebool = active.value(forKeyPath: "isActive") as? Bool
+                        let insertedDate = date.value(forKeyPath: "taskDate") as? Date
+                        
+            
+            
+                        let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "dd/MM"
+                        let dateLabel = dateFormatter.string(from: insertedDate!)
+            
+                        if taskstate.value(forKeyPath: "taskState") as? Int == 0  {
+                           let cell = Bundle.main.loadNibNamed("ImportantTaskCell", owner: self, options: nil)?.first as! ImportantTaskCell
+            
+                           cell.titleTaskLabel.text = taskname.value(forKeyPath: "taskName") as? String
+                           cell.dateTaskLabel.text = description.value(forKeyPath: "taskDescription") as? String
+                           cell.deadlineTaskLabel.text = dateLabel
+                           cell.taskCardView.layer.cornerRadius = 10
+                            
+                            if activebool == false {
+                                cell.taskCardView.backgroundColor = .lightGray
+                                cell.taskCardView.reloadInputViews()
+                            }
+                            
+                           return cell
+            
+                       } else if taskstate.value(forKeyPath: "taskState") as? Int == 1 {
+                           let cell = Bundle.main.loadNibNamed("ModerateTaskCell", owner: self, options: nil)?.first as! ModerateTaskCell
+                           cell.titleTaskLabel.text = taskname.value(forKeyPath: "taskName") as? String
+                           cell.dateTaskLabel.text = description.value(forKeyPath: "taskDescription") as? String
+                           cell.deadlineTaskLabel.text = dateLabel
+                           cell.taskCardView.layer.cornerRadius = 10
+                            
+                            if activebool == false {
+                                cell.taskCardView.backgroundColor = .lightGray
+                                cell.taskCardView.reloadInputViews()
+                            }
+                            
+                           return cell
+            
+                        } else if taskstate.value(forKeyPath: "taskState") as? Int == 2 {
+                          let cell = Bundle.main.loadNibNamed("LessImportantTaskCell", owner: self, options: nil)?.first as! LessImportantTaskCell
+                          cell.titleTaskLabel.text = taskname.value(forKeyPath: "taskName") as? String
+                          cell.dateTaskLabel.text = description.value(forKeyPath: "taskDescription") as? String
+                          cell.deadlineTaskLabel.text = dateLabel
+                          cell.taskCardView.layer.cornerRadius = 10
+                            
+                            if activebool == false {
+                                cell.taskCardView.backgroundColor = .lightGray
+                                cell.taskCardView.reloadInputViews()
+                            }
+                            
+                          return cell
+            
+                       } else {
+                           let cell = Bundle.main.loadNibNamed("AssistedTaskCell", owner: self, options: nil)?.first as! AssistedTaskCell
+                           cell.titleTaskLabel.text = taskname.value(forKeyPath: "taskName") as? String
+                           cell.dateTaskLabel.text = description.value(forKeyPath: "taskDescription") as? String
+                           cell.deadlineTaskLabel.text = dateLabel
+                           cell.taskCardView.layer.cornerRadius = 10
+                            
+                            if activebool == false {
+                                cell.taskCardView.backgroundColor = .lightGray
+                                cell.taskCardView.reloadInputViews()
+                            }
+                            
+                           return cell
+            
+                       }
+            
+            
+            
         }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -676,3 +753,15 @@ class TasksTVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UN
 
 }
 
+
+
+
+
+
+
+//let activeTasksCell = tableView.dequeueReusableCell(withIdentifier: "activeTasksCell", for: indexPath)
+//let taskname = tasks.taskName[indexPath.row]
+//let tasksub = tasks.taskDescription[indexPath.row]
+//activeTasksCell.textLabel?.text = taskname.value(forKeyPath: "taskName") as? String
+//activeTasksCell.detailTextLabel?.text = tasksub.value(forKeyPath: "taskDescription") as? String
+//return activeTasksCell

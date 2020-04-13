@@ -24,14 +24,14 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         taskTypeDetail = priority
         
         if taskTypeDetail == "Low" {
-            taskDetailInt = 0
+            taskDetailInt = 2
         }
         else if taskTypeDetail == "Moderate" {
             taskDetailInt = 1
             
         }
         else if taskTypeDetail == "Important" {
-            taskDetailInt = 2
+            taskDetailInt = 0
             
         }
         else {
@@ -77,7 +77,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM HH:mm"
             let cellLabel = dateFormatter.string(from: taskReminderDate)
-            cell.detailTextLabel?.text = "Coming Soon"//cellLabel
+            cell.detailTextLabel?.text = cellLabel
             cell.detailTextLabel?.textColor = .gray
         }
             
@@ -99,7 +99,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             performSegue(withIdentifier: "dueDateSegue", sender: self)
         }
         else if indexPath.row == 1 {
-            //performSegue(withIdentifier: "addReminderSegue", sender: self)
+            performSegue(withIdentifier: "addReminderSegue", sender: self)
         }
         else if indexPath.row == 2 {
             
@@ -132,9 +132,93 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var tableView: UITableView!
     
 //
-//    struct TasksDataModel {
-//
-//    }
+//  Notification properties
+    
+    let userNotificationCenter = UNUserNotificationCenter.current()
+        
+        func requestNotificationAuthorization() {
+            
+            let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+            self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+                if let error = error {
+                    print("Error: ", error)
+                }
+            }
+            // Code here
+        }
+
+        func sendNotification(title: String, body: String, value:Int, dateCasted: Date) {
+            
+            let notificationContent = UNMutableNotificationContent()
+
+            // Add the content to the notification content
+            notificationContent.title = "Hello, you asked me to remind you.."
+            notificationContent.body = "Task '\(title)'"
+            notificationContent.badge = NSNumber(value: value)
+            notificationContent.sound = .default
+            //notificationContent.userInfo
+
+            // Add an attachment to the notification content
+            if let url = Bundle.main.url(forResource: "dune",
+                                            withExtension: "png") {
+                if let attachment = try? UNNotificationAttachment(identifier: "dune",
+                                                                    url: url,
+                                                                    options: nil) {
+                    notificationContent.attachments = [attachment]
+                }
+            }
+            
+            var dateComponents = DateComponents()
+            
+            let formatterY = DateFormatter()
+            formatterY.dateFormat = "yyyy"
+            let insertedY = formatterY.string(from: dateCasted)
+            dateComponents.year = Int(insertedY)
+            
+            let formatterMM = DateFormatter()
+            formatterMM.dateFormat = "MM"
+            let insertedMM = formatterMM.string(from: dateCasted)
+            dateComponents.month = Int(insertedMM)
+            
+            let formatterD = DateFormatter()
+            formatterD.dateFormat = "dd"
+            let insertedD = formatterD.string(from: dateCasted)
+            dateComponents.day = Int(insertedD)
+
+            
+            let formatterH = DateFormatter()
+            formatterH.dateFormat = "HH"
+            let insertedH = formatterH.string(from: dateCasted)
+            dateComponents.hour = Int(insertedH)
+            
+            let formatterM = DateFormatter()
+            formatterM.dateFormat = "mm"
+            let insertedM = formatterM.string(from: dateCasted)
+            dateComponents.minute = Int(insertedM)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+    //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
+    //        repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "testNotification",
+            content: notificationContent,
+            trigger: trigger)
+            
+            userNotificationCenter.add(request) { (error) in
+                if let error = error {
+                    print("Notification Error: ", error)
+                }
+            }
+            
+        }
+        
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            completionHandler()
+        }
+
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            completionHandler([.alert, .badge, .sound])
+        }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -284,6 +368,7 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let dateToSave = dueDate
             let priorityToSave = taskDetailInt
             taskDelegate?.didSaveNew(name: nameToSave, description: descriptionToSave, date: dateToSave, state: priorityToSave)
+            sendNotification(title: nameToSave, body: descriptionToSave, value: 1, dateCasted: self.taskReminderDate)
             tabBarController?.selectedIndex = 0
             //taskDelegate?.didUpdateTableView(sender: self)
 

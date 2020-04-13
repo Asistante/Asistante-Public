@@ -23,6 +23,14 @@
 		4F9153812438A826007F3E76 /* InactiveTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153802438A826007F3E76 /* InactiveTaskCell.swift */; };
 		4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153822438D3B1007F3E76 /* TabBarController.swift */; };
 		4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9153882438DE7E007F3E76 /* NewTaskVC.swift */; };
+		4F95268F2444CAF200C5926C /* AssistedTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9526872444CAF200C5926C /* AssistedTaskCell.xib */; };
+		4F9526902444CAF200C5926C /* LessImportantTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9526882444CAF200C5926C /* LessImportantTaskCell.swift */; };
+		4F9526912444CAF200C5926C /* LessImportantTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9526892444CAF200C5926C /* LessImportantTaskCell.xib */; };
+		4F9526922444CAF200C5926C /* ModerateTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95268A2444CAF200C5926C /* ModerateTaskCell.swift */; };
+		4F9526932444CAF200C5926C /* ImportantTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F95268B2444CAF200C5926C /* ImportantTaskCell.xib */; };
+		4F9526942444CAF200C5926C /* AssistedTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95268C2444CAF200C5926C /* AssistedTaskCell.swift */; };
+		4F9526952444CAF200C5926C /* ImportantTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95268D2444CAF200C5926C /* ImportantTaskCell.swift */; };
+		4F9526962444CAF200C5926C /* ModerateTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F95268E2444CAF200C5926C /* ModerateTaskCell.xib */; };
 		4FAACE9A2443048600DF90F0 /* EditPriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE992443048600DF90F0 /* EditPriorityVC.swift */; };
 		4FAACE9C2443070C00DF90F0 /* EditReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE9B2443070C00DF90F0 /* EditReminderVC.swift */; };
 		4FAACE9E2443073300DF90F0 /* EditDueDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACE9D2443073300DF90F0 /* EditDueDateVC.swift */; };
@@ -52,6 +60,14 @@
 		4F9153802438A826007F3E76 /* InactiveTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveTaskCell.swift; sourceTree = "<group>"; };
 		4F9153822438D3B1007F3E76 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F9153882438DE7E007F3E76 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
+		4F9526872444CAF200C5926C /* AssistedTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssistedTaskCell.xib; sourceTree = "<group>"; };
+		4F9526882444CAF200C5926C /* LessImportantTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessImportantTaskCell.swift; sourceTree = "<group>"; };
+		4F9526892444CAF200C5926C /* LessImportantTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessImportantTaskCell.xib; sourceTree = "<group>"; };
+		4F95268A2444CAF200C5926C /* ModerateTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModerateTaskCell.swift; sourceTree = "<group>"; };
+		4F95268B2444CAF200C5926C /* ImportantTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportantTaskCell.xib; sourceTree = "<group>"; };
+		4F95268C2444CAF200C5926C /* AssistedTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistedTaskCell.swift; sourceTree = "<group>"; };
+		4F95268D2444CAF200C5926C /* ImportantTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportantTaskCell.swift; sourceTree = "<group>"; };
+		4F95268E2444CAF200C5926C /* ModerateTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModerateTaskCell.xib; sourceTree = "<group>"; };
 		4FAACE992443048600DF90F0 /* EditPriorityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPriorityVC.swift; sourceTree = "<group>"; };
 		4FAACE9B2443070C00DF90F0 /* EditReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderVC.swift; sourceTree = "<group>"; };
 		4FAACE9D2443073300DF90F0 /* EditDueDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDueDateVC.swift; sourceTree = "<group>"; };
@@ -141,6 +157,7 @@
 		4F65B0EF2431D38200BF24A0 /* Asistante */ = {
 			isa = PBXGroup;
 			children = (
+				4F9526862444CAF200C5926C /* CustomCell */,
 				4F1B1032243B283200C3DDA1 /* Delegates */,
 				4F1B1033243B284400C3DDA1 /* View Controllers */,
 				4F1B1034243B285F00C3DDA1 /* Storyboards */,
@@ -151,6 +168,22 @@
 				4F1B103B243B2CB600C3DDA1 /* DataModel.swift */,
 			);
 			path = Asistante;
+			sourceTree = "<group>";
+		};
+		4F9526862444CAF200C5926C /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				4F9526872444CAF200C5926C /* AssistedTaskCell.xib */,
+				4F9526882444CAF200C5926C /* LessImportantTaskCell.swift */,
+				4F9526892444CAF200C5926C /* LessImportantTaskCell.xib */,
+				4F95268A2444CAF200C5926C /* ModerateTaskCell.swift */,
+				4F95268B2444CAF200C5926C /* ImportantTaskCell.xib */,
+				4F95268C2444CAF200C5926C /* AssistedTaskCell.swift */,
+				4F95268D2444CAF200C5926C /* ImportantTaskCell.swift */,
+				4F95268E2444CAF200C5926C /* ModerateTaskCell.xib */,
+			);
+			name = CustomCell;
+			path = ../../../../Downloads/CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +244,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F95268F2444CAF200C5926C /* AssistedTaskCell.xib in Resources */,
+				4F9526932444CAF200C5926C /* ImportantTaskCell.xib in Resources */,
+				4F9526962444CAF200C5926C /* ModerateTaskCell.xib in Resources */,
 				4F65B1022431D38400BF24A0 /* LaunchScreen.storyboard in Resources */,
 				4F65B0FF2431D38400BF24A0 /* Assets.xcassets in Resources */,
+				4F9526912444CAF200C5926C /* LessImportantTaskCell.xib in Resources */,
 				4F65B0FA2431D38200BF24A0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FAACE9E2443073300DF90F0 /* EditDueDateVC.swift in Sources */,
+				4F9526922444CAF200C5926C /* ModerateTaskCell.swift in Sources */,
 				4FAACE9A2443048600DF90F0 /* EditPriorityVC.swift in Sources */,
 				4F1B1038243B2C2B00C3DDA1 /* NotificationTVC.swift in Sources */,
 				4FEB78B724408D6300764B13 /* DelegateProtocol.swift in Sources */,
@@ -233,6 +271,7 @@
 				4FEA63F3243DCAED00731A2C /* TaskPriorityVC.swift in Sources */,
 				4F65B10A24334DFF00BF24A0 /* BoardingViewController.swift in Sources */,
 				4FEB78B9244094EF00764B13 /* AddDueDateVC.swift in Sources */,
+				4F9526952444CAF200C5926C /* ImportantTaskCell.swift in Sources */,
 				4F65B0F72431D38200BF24A0 /* ProgressVC.swift in Sources */,
 				4F9153892438DE7E007F3E76 /* NewTaskVC.swift in Sources */,
 				4FEB78B3243F655A00764B13 /* AddReminderVC.swift in Sources */,
@@ -240,8 +279,10 @@
 				4F1B103C243B2CB600C3DDA1 /* DataModel.swift in Sources */,
 				4F9153832438D3B1007F3E76 /* TabBarController.swift in Sources */,
 				4F91537F2438A7EF007F3E76 /* ActiveTaskCell.swift in Sources */,
+				4F9526902444CAF200C5926C /* LessImportantTaskCell.swift in Sources */,
 				4F65B0F52431D38200BF24A0 /* TasksTVC.swift in Sources */,
 				4F65B0F12431D38200BF24A0 /* AppDelegate.swift in Sources */,
+				4F9526942444CAF200C5926C /* AssistedTaskCell.swift in Sources */,
 				4F65B0F32431D38200BF24A0 /* SceneDelegate.swift in Sources */,
 				4FEA63F1243C8FA700731A2C /* EnterNameVC.swift in Sources */,
 				4F9153812438A826007F3E76 /* InactiveTaskCell.swift in Sources */,

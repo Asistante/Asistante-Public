@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HTD-92-sPQ">
-                                <rect key="frame" x="0.0" y="59" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -70,40 +70,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-t9-hn1">
-                                <rect key="frame" x="86" y="21" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsV-oa-hQq">
+                                <rect key="frame" x="179" y="19" width="56" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Tue"/>
+                                <state key="normal" title="Wed" image="cal3"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsV-oa-hQq">
-                                <rect key="frame" x="140" y="21" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N18-gj-I69">
+                                <rect key="frame" x="259" y="18" width="56" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Wed"/>
+                                <state key="normal" title="Thu" image="cal4"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N18-gj-I69">
-                                <rect key="frame" x="194" y="21" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqD-sc-q5o">
+                                <rect key="frame" x="20" y="19" width="56" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Thu"/>
+                                <state key="normal" title="Mon" image="cal1"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-AS-xmG">
-                                <rect key="frame" x="248" y="21" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-AS-xmG">
+                                <rect key="frame" x="338" y="19" width="56" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Fri"/>
+                                <state key="normal" title="Fri" image="cal5"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Te-U3-bGE">
-                                <rect key="frame" x="302" y="21" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-t9-hn1">
+                                <rect key="frame" x="103" y="19" width="56" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sat"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8h-uQ-nui">
-                                <rect key="frame" x="360" y="21" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sun"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqD-sc-q5o">
-                                <rect key="frame" x="24" y="20" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Mon"/>
+                                <state key="normal" title="Tue" image="cal2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -133,8 +123,6 @@
                         <outlet property="notificationButton" destination="A1T-ix-wIg" id="koY-eR-lcW"/>
                         <outlet property="placeholderImage" destination="uYf-Y0-138" id="kNY-yl-zTO"/>
                         <outlet property="placeholderText" destination="up3-A2-cz1" id="9s5-oN-CND"/>
-                        <outlet property="saturdayButton" destination="7Te-U3-bGE" id="OM7-EK-IMs"/>
-                        <outlet property="sundayButton" destination="A8h-uQ-nui" id="nO9-B7-SJi"/>
                         <outlet property="tableView" destination="HTD-92-sPQ" id="sam-LR-fvj"/>
                         <outlet property="thursdayButton" destination="N18-gj-I69" id="WkX-JB-jMS"/>
                         <outlet property="tuesdayButton" destination="H0k-t9-hn1" id="fDN-VZ-jHz"/>
@@ -145,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="-317"/>
+            <point key="canvasLocation" x="1544.9275362318842" y="-317.41071428571428"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="FpB-Gz-eW1">
@@ -631,8 +619,8 @@
                                 <rect key="frame" x="41" y="820" width="334" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96554285289999997" green="0.66072422269999997" blue="0.026636179539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                <state key="normal" title="LET'S GO!">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <state key="normal" title="Let's Go!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1029,13 +1017,18 @@
     <inferredMetricsTieBreakers>
         <segue reference="lFi-ib-hAF"/>
         <segue reference="5xp-3s-m5x"/>
-        <segue reference="RI6-Gr-pyL"/>
+        <segue reference="jpK-hL-wl8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RectBorder" width="413" height="42"/>
         <image name="addTask" width="75" height="75"/>
         <image name="asistante-bible" width="1500" height="1246"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="cal1" width="500" height="670"/>
+        <image name="cal2" width="500" height="670"/>
+        <image name="cal3" width="500" height="670"/>
+        <image name="cal4" width="500" height="660"/>
+        <image name="cal5" width="500" height="670"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
