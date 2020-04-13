@@ -41,13 +41,13 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         textField.text = textFieldContent
         textView.text = textViewContent
         
-        if taskDetailInt == 0 {
+        if taskDetailInt == 2 {
             taskTypeDetail = "Low"
         }
         else if taskDetailInt == 1 {
             taskTypeDetail = "Moderate"
         }
-        else if taskDetailInt == 2 {
+        else if taskDetailInt == 0 {
             taskTypeDetail = "Important"
         }
         else {
@@ -112,7 +112,7 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM HH:mm"
             let cellLabel = dateFormatter.string(from: taskReminderDate)
-            cell.detailTextLabel?.text = "Coming Soon"//cellLabel
+            cell.detailTextLabel?.text = cellLabel
             cell.detailTextLabel?.textColor = .gray
         }
         else if indexPath.row == 3 {
@@ -133,7 +133,7 @@ class EditTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             performSegue(withIdentifier: "addDueDateEditSegue", sender: self)
         }
         else if indexPath.row == 1 {
-            //performSegue(withIdentifier: "addReminderEditSegue", sender: self)
+            performSegue(withIdentifier: "addReminderEditSegue", sender: self)
         }
         else if indexPath.row == 3 {
             performSegue(withIdentifier: "setPriorityEditSegue", sender: self)
