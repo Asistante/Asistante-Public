@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NewTaskDelegate {
+class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NewTaskDelegate {
     
     func passDate(date: Date) {
         dueDate = date
@@ -80,6 +80,8 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
             cell.detailTextLabel?.text = "Coming Soon"//cellLabel
             cell.detailTextLabel?.textColor = .gray
         }
+            
+            
         else if indexPath.row == 3 {
             cell.detailTextLabel?.text = taskTypeDetail
             cell.detailTextLabel?.textColor = .gray
@@ -99,6 +101,25 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
         else if indexPath.row == 1 {
             //performSegue(withIdentifier: "addReminderSegue", sender: self)
         }
+        else if indexPath.row == 2 {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM HH:mm"
+            let datePost = dateFormatter.string(from: taskReminderDate)
+                                  
+            let msg = "Hi buddy! I need your help to remind me to do this task! I have a \(taskTitleTextField.text!) and it should be done on \(datePost). This task is very important for me. So, please help me! Thank you🤗"
+            let urlWhats = "whatsapp://send?text=\(msg)"
+
+            if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+            if let whatsappURL = NSURL(string: urlString) {
+            if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+            UIApplication.shared.openURL(whatsappURL as URL)
+             } else {
+             print("please install WhatsApp!")
+            }
+        }
+    }
+ }
         else if indexPath.row == 3 {
             performSegue(withIdentifier: "setPrioritySegue", sender: self)
         }
@@ -125,31 +146,31 @@ class NewTaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource, N
         
         taskDelegate = TasksTVC()
         tableView.delegate = self
-        
-    
-        
-        //title = "Add Task"
-        //taskTypeDetail = taskType
 
-//        self.taskStatePicker.delegate = self
-//        self.taskStatePicker.dataSource = self
-        //tabBarController?.tabBar.isHidden = true
-        
-//        addTaskButton.layer.cornerRadius = 25
-        
-        if descriptionTextView.text == "" {
-            descriptionTextView.text = "Description"
-            descriptionTextView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.7764705882, alpha: 1)
-        }
-        else {
-            return
-        }
+        descriptionTextView.text = "Task description"
+        descriptionTextView.textColor = .lightGray
+        descriptionTextView.delegate = self
+
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Task description"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     //Blur effect for alert view. Set parameter true to show, false to dismiss.
