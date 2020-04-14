@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AssistedTaskCell" customModule="Asistante" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="AssistedTaskCell" customModule="Asistante" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ijy-Zg-6fM">
+                        <rect key="frame" x="20" y="12" width="374" height="97"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYa-1M-xO8">
+                                <rect key="frame" x="83" y="9" width="263" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description Goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FH-Mc-sdp">
+                                <rect key="frame" x="86" y="45" width="266" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jan, 20-2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccf-Wu-FYb">
+                                <rect key="frame" x="86" y="70" width="72" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITB-H8-chH">
+                                <rect key="frame" x="27" y="29" width="32" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.95026273559999996" green="0.94904496009999995" blue="0.97031646569999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.72858279940000004" green="0.78931897880000002" blue="0.25079038739999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.72858279940000004" green="0.78931897880000002" blue="0.25079038739999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </subviews>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="completeButton" destination="ITB-H8-chH" id="ktR-Nu-p71"/>
+                <outlet property="dateTaskLabel" destination="3FH-Mc-sdp" id="HEz-pr-Gsv"/>
+                <outlet property="deadlineTaskLabel" destination="Ccf-Wu-FYb" id="SQL-NZ-JvP"/>
+                <outlet property="taskCardView" destination="Ijy-Zg-6fM" id="vyD-f8-nyf"/>
+                <outlet property="titleTaskLabel" destination="BYa-1M-xO8" id="nMD-0y-quK"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="136.60714285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle" catalog="system" width="64" height="60"/>
+    </resources>
+</document>
